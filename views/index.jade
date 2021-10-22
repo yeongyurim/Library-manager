@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  header
+    h2 관리자 페이지
+    ul
+      li #{name}
+      li
+        a(href="logout") 로그아웃
+  nav
+    ul
+      li
+        a(href="members") 회원 관리
+      li
+        a(href="books") 자료 관리
+      li
+        a(href="lendings") 대출 반납 관리 

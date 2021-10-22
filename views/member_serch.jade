@@ -1,0 +1,25 @@
+extends layout
+
+block content
+
+  header
+    h2 Member Serch
+  
+  section
+    acticle
+      form(method="post")
+        div
+          label(for="Serch") 이용자 검색
+          input(name="Serch" type="text" placeholder="검색하세요.")
+        button(type="submit" name="button") 검색
+    article
+      div
+        table
+          - name.forEach((user) => {
+              tr
+                td=user.name 
+                td=user.LIBRARY_ID
+                td=user.email
+                td=user.phone_num 
+          - });
+        

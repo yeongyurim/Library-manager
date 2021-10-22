@@ -1,0 +1,22 @@
+extends layout
+
+block content
+
+  header
+    h2 Member Overdue
+  
+  section
+    acticle
+      form(method="post")
+        label(for="Serch") 연체 이용자
+        input(name="Serch" type="text" placeholder="검색하세요.")
+      button(type="submit" name="button") 검색
+    article
+      div
+      - name.forEach((user) => {
+          tr
+            td=user.name 
+            td=user.id
+            td=user.email
+            td=user.phone_num 
+      - });

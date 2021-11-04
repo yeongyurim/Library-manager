@@ -30,8 +30,41 @@ client.connect((err) => {
 */
 
 /* GET users listing. */
+
 router.get('/', function(req, res, next) {
   res.render('lending');
 });
+
+router.get('/register', function(req, res, next) {
+  res.render('lending_register');
+});
+
+router.post('/register', function(req,res,next) {
+  var LIBRARY_ID = req.body.LIBRARY_ID;
+  var RECORD_ID = req.body.RECORD_ID;
+
+  client.query('insert into book (LIBRARY)ID values ('+question_mark+')',
+  params,function(err,r){
+  if(err) console.log(err);
+
+  console.log(r);
+  res.render('book_register');
+
+  });
+});
+
+router.get('/return', function(req, res, next) {
+  res.render('lending_recent');
+});
+
+router.get('/current', function(req, res, next) {
+  res.render('lending_current');
+});
+
+router.get('/holiday', function(req, res, next) {
+  res.render('lending_holiday');
+});
+
+
 
 module.exports = router;

@@ -1,0 +1,16 @@
+extends layout
+
+block content
+
+  header 
+    h2 #{name}의 페이지
+  
+    ul
+      li
+        a(href="users/serch") 관리자검색
+      li
+        a(href="users/register") 관리자등록  
+      li
+        a(href="users/modify") 관리자수정
+      li
+        a(href="users/delete") 관리자삭제

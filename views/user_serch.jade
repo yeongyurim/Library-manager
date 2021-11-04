@@ -3,23 +3,24 @@ extends layout
 block content
 
   header
-    h2 Member Serch
+    h2 Administer Serch
   
   section
     acticle
       form(method="post")
         div
-          label(for="Serch") 이용자 검색
-          input(name="Serch" type="text" placeholder="검색하세요.")
+          label(for="name") 관리자 검색
+          input(name="name" type="text" placeholder="검색하세요.")
         button(type="submit" name="button") 검색
     article
       div
         table
           -for(i=0;i<data.length;i++) { user = data[i];
             tr
-              td #{user.LIBRARY_ID}
-              td #{user.NAME}
+              td #{user.UNION_ID}
+              td #{user.KOREAN_NAME}
               td #{user.SEC_E_MAIL}
               td #{user.DIRECT_PHONE1} #{user.DIRECT_PHONE2} #{user.DIRECT_PHONE3}
-            -}
-        
+          -}
+            
+            

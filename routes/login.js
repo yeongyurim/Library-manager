@@ -39,7 +39,7 @@ router.post('/', function(req, res) {
   var paramID = req.body.id || req.query.id;
   var pw = req.body.passwd || req.query.passwd;
 
-  client.query('select * from user where union_id = ? and passwd = ?',[paramID,pw] ,function (e,r) {
+  client.query('select * from user where UNION_ID = ? and passwd = ?',[paramID,pw] ,function (e,r) {
     if (e) throw error ;
     if (r.length > 0) {
       req.session.user = r[0].KOREAN_NAME;
@@ -48,9 +48,19 @@ router.post('/', function(req, res) {
       res.redirect('/')
     }
     else {
-      console.log('비밀번호가 올바르지 않습니다.')
+      client.query('select * from member where LIBRARY_ID = ? and SEC_PASSWORD = ?',[paramID,pw] ,function (e,r) {
+        if (e) throw error ;
+        if (r.length > 0) {
+          req.session.member = r[0].NAME;
+          req.session.id = r[0].LIBRARY_ID;
+          console.log();
+          res.redirect('/')
+        }
+        else {
+          console.log('비밀번호가 잘못되었습니다.');
+        }
+      });
     }
   });
 });
-
 module.exports = router;

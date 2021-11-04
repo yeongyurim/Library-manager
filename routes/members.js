@@ -41,8 +41,7 @@ router.get('/', function(req, res, next) {
 // 이용자 검색
 
 router.get('/serch', function(req, res, next){
-  arr = []
-  res.render('member_serch', { name : arr } );
+  res.render('member_serch',{data:''});
 
 });
 
@@ -50,16 +49,17 @@ router.post('/serch', function(req, res, next){
 
   var paramName = req.body.Serch || req.query.Serch;
 
-  client.query('select * from member where name = ?',[paramName] ,function (e,r) {
+  client.query('select * from member where NAME = ?',[paramName] ,function (e,r) {
 
     if (e) throw error ;
 
     if (r.length > 0) {
 
-      res.render('member_serch', { name : r } );
+      res.render('member_serch', {data: r } );
 
     }
     else {
+      res.render('member_serch',{data:''});
       console.log('검색결과가 없습니다.')
     }
 
@@ -73,53 +73,32 @@ router.get('/register', function(req, res, next){
 
 router.post('/register', function(req, res, next){
 
-  var id = req.body.id;
-  var passwd = req.body.passwd;
-  var kor_name = req.body.kor_name;
-  var eng_name = req.body.eng_name;
-  var residence_id = req.body.residence_id;
-  var birthday = req.body.birthday;
-  var solar_lunar = req.body.solar_lunar;
-  var sex = req.body.sex;
-  var marriage = req.body.marriage;
-  var home_num_1_1 = req.body.home_num_1_1;
-  var home_num_1_2 = req.body.home_num_1_2;
-  var home_num_1_3 = req.body.home_num_1_3;
-  var home_num_2_1 = req.body.home_num_2_1;
-  var home_num_2_2 = req.body.home_num_2_2;
-  var home_num_2_3 = req.body.home_num_2_3;
-  var phone_num = req.body.phone_num;
-  var zip_code = req.body.zip_code;
-  var home_address = req.body.home_address;
-  var home_address_d = req.body.home_address_d;
-  var email = req.body.email
-  var final_scholarship = req.body.final_scholarship;
-  var degree_sholarship = req.body.degree_sholarship;
-  var gradation_date = req.body.gradation_date;
-  var school_name = req.body.school_name;
-  var academic_degree = req.body.academic_degree;
-  var work = req.body.work;
-  var work_name = req.body.work_name;
-  var work_duty = req.body.work_duty;
-  var work_num_1 = req.body.work_num_1;
-  var work_num_2 = req.body.work_num_2;
-  var work_num_3 = req.body.work_num_3;
-  var work_num_ext = req.body.work_num_ext;
-  var direct_num_1 = req.body.direct_num_1;
-  var direct_num_2 = req.body.direct_num_2;
-  var direct_num_3 = req.body.direct_num_3;
-  var work_zipcode = req.body.zip_code;
-  var work_address = req.body.work_address;
+  var params_name = []
+  var question_mark = ""
+  var params = [req.body.LIBRARAY_ID,req.body.SEC_PASSWORD,req.body.NAME,req.body.SEC_E_MAIL,req.body.SEC_MOBILE_PHONE1,
+  req.body.SEC_MOBILE_PHONE2,req.body.SEC_MOBILE_PHONE3,req.body.MEMBERSHIP_FLAG,req.body.MEMBERSHIP_GROUP,req.body.MEMBERSHIP_LENDWEEK,
+  req.body.REMARK,req.body.MEMBERSHIP_DELAY,req.body.DELETE_FLAG,req.body.FAMILY];
 
+  for (i=0;i<params.length;i++) if(!params[i]) params[i] = "" ;
 
-    client.query('insert into user (LIBRARY_ID,passwd,name,email,phone_num) values (?,?,?,?,?)',
-  [id,passwd,name,email,pn],function(err,r){
-    if(err) console.log(err);
+  params_name[0] = "LIBRARY_ID,SEC_PASSWORD,NAME,SEC_E_MAIL"
+  params_name[1] = "SEC_MOBILE_PHONE1,SEC_MOBILE_PHONE2,SEC_MOBILE_PHONE3"
+  params_name[2] = "MEMBERSHIP_FLAG,MEMBERSHIP_GROUP,MEMBERSHIP_LENDWEEK"
+  params_name[3] = "REMARK,MEMBERSHIP_DELAY,DELETE_FLAG,FAMILY"
 
-    console.log(r);
-    res.render('member_register',{msg:r});
+  for (i=0;i<params.length-1;i++){
+    question_mark += "?,"
+  }
+  question_mark += "?"
 
-});
+  client.query('insert into member ('+params_name+') values ('+question_mark+')',
+  params,function(err,r){
+  if(err) console.log(err);
+
+  console.log(r);
+  res.render('member_register');
+
+  });
 
 });
 
@@ -127,24 +106,14 @@ router.post('/register', function(req, res, next){
 
 router.get('/overdue', function(req, res, next){
 
-  client.query('select * from user where name = ?',[paramName] ,function (e,r) {
-
-    if (e) throw error ;
-
-    if (r.length > 0) {
-
-      res.render('member_serch', { name : r } );
-
-    }
-    else {
-      console.log('검색결과가 없습니다.')
-    }
-
-  });
+    res.render('member_overdue');
 
 });
 
-router.post('')
+router.post('overdue', function(req,res,next){
+
+  res.render('member_overdue');
+})
 
 // 이용자 정보 수정
 
@@ -158,5 +127,18 @@ router.get('/modify', function(req, res, next){
 router.get('/delete', function(req, res, next){
   res.render('member_delete');
 });
+
+router.post('/delete', function(req, res, next){
+
+  var id = req.body.ID;
+
+  client.query('delete from member where LIBRARY_ID = ?',
+  [id],
+  function(err,r){
+    if(err) console.log(err);
+
+    res.render('member_delete',{data:r});
+  });
+})
 
 module.exports = router;

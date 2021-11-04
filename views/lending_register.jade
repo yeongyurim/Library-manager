@@ -3,23 +3,20 @@ extends layout
 block content
 
   header
-    h2 Member Serch
+    h2 Lending add
   
   section
     acticle
       form(method="post")
+        h2 도서 대출 등록 
         div
-          label(for="Serch") 이용자 검색
-          input(name="Serch" type="text" placeholder="검색하세요.")
-        button(type="submit" name="button") 검색
+          label(for="LIBRARY_ID") 회원 id
+          input(name="LIBRARY_ID" type="text" placeholder="member id")
+          label(for="RECORD_ID") 회원 id
+          input(name="RECORD_ID" type="text" placeholder="record id")
+        button(type="submit" name="button") 대출 
     article
       div
         table
-          - name.forEach((user) => {
-              tr
-                td=user.name 
-                td=user.id
-                td=user.email
-                td=user.phone_num 
-          - });
+    
         

@@ -3,23 +3,74 @@ extends layout
 block content
 
   header
-    h2 Member Serch
+    h2 Book Modify
   
   section
-    acticle
-      form(method="post")
-        div
-          label(for="Serch") 이용자 검색
-          input(name="Serch" type="text" placeholder="검색하세요.")
-        button(type="submit" name="button") 검색
-    article
+    h2 자료 수정
+  acticle
+    form(method="post")
+      label(for="RECORD_ID") 자료 id
+      input(name="RECORD_ID" type="record id" placeholder="id")
+      label(for="ISBN") ISBN 코드
+      input(name="ISBN" type="text" placeholder="isbn")
+      label(for="EXTRA_CODE") 추가 코드 
+      input(name="EXTRA_CODE" type="text" placeholder="extra code")
+      label(for="CLASS_ID") class id
+      input(name="CLASS_ID" type="text" placeholder="class id")
+      label(for="WRITER_NAME1") 작가 이름  
+      input(name="WRITER_NAME1" type="text" placeholder="writer 1")
+      label(for="AUTHOR_NAME1") 저자 이름  
+      input(name="AUTHOR_NAME1" type="text" placeholder="author 1")
+      label(for="WRITER_NAME2") 작가 이름  
+      input(name="WRITER_NAME2" type="text" placeholder="writer 2")
+      label(for="AUTHOR_NAME2") 저자 이름  
+      input(name="AUTHOR_NAME2" type="text" placeholder="author 2")
+      label(for="WRITER_NAME3") 작가 이름  
+      input(name="WRITER_NAME3" type="text" placeholder="writer 3")
+      label(for="AUTHOR_NAME3") 저자 이름  
+      input(name="AUTHOR_NAME3" type="text" placeholder="author 3")
+      label(for="AUTHOR_NAME1")  이름  
+      input(name="AUTHOR_NAME1" type="text" placeholder="author 1")
+      label(for="TRANSLATOR_NAME") 옮긴 이   
+      input(name="TRANSLATOR_NAME" type="text" placeholder="translator1")
+      label(for="TRANSLATOR_NAME2") 옮긴 이   
+      input(name="TRANSLATOR_NAME2" type="text" placeholder="translator2")
+      label(for="TITLE_OF_BOOK") 책 이름
+      input(name="TITLE_OF_BOOK" type="text" placeholder="title of book")
+      label(for="ORIGINAL_TITLE")  책 원어이름
+      input(name="ORIGINAL_TITLE" type="text" placeholder="original title")
+      label(for="ENGLiSH_TITLE")  책 영어이름 
+      input(name="ENGLISH_TITLE" type="text" placeholder="english title")
+      label(for="SECONDARY_TITLE")  부제목
+      input(name="SECONDARY_TITLE" type="text" placeholder="secondary title")
+      label(for="SERIES_TITLE")  시리즈 이름 
+      input(name="SERIES_TITLE" type="text" placeholder="series title")
+      label(for="ISSUE_COUNT")  발간 호 수
+      input(name="ISSUE COUNT" type="text" placeholder="issue count")
+      label(for="ISSUE_NATION")  발간 국가 
+      input(name="ISSUE_NATION" type="text" placeholder="issue nation")
+      label(for="ISSUE_COMPANY")  발간 회사 
+      input(name="ISSUE_COMPANY" type="text" placeholder="issue company")
+      label(for="TOTAL_PAGE")  페이지 수 
+      input(name="TOTAL_PAGE" type="text" placeholder="total page")
+      label(for="ILLUSTRATION")  일러스트 
+      input(name="ILLUSTRATION" type="text" placeholder="illustration")
+      label(for="BOOK_SIZE")  책 크기  
+      input(name="BOOK_SIZE" type="text" placeholder="book size")
+      label(for="BOOK_PRICE")  책 가격
+      input(name="BOOK_PRICE" type="text" placeholder="book price")
+      label(for="THEME_WORD1")  주제어 
+      input(name="THEME_WORD1" type="text" placeholder="theme word")
+      label(for="THEME_WORD2")  주제어 
+      input(name="THEME_WORD2" type="text" placeholder="theme word")
+      label(for="THEME_WORD3")  주제어 
+      input(name="THEME_WORD3" type="text" placeholder="theme word")
+      label(for="THEME_WORD4")  주제어 
+      input(name="THEME_WORD4" type="text" placeholder="theme word")
+      label(for="THEME_WORD5")  주제어 
+      input(name="THEME_WORD5" type="text" placeholder="theme word")
+      button(type="submit" name="button") 수정
+  article
       div
         table
-          - name.forEach((user) => {
-              tr
-                td=user.name 
-                td=user.id
-                td=user.email
-                td=user.phone_num 
-          - });
         

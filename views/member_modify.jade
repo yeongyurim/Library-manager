@@ -6,40 +6,35 @@ block content
     h2 Member Modify
   
     section
+      h2 회원 수정
       acticle
         form(method="post")
-          label(for="id") 아이디 
-          input(name="id" type="text" placeholder="id")
+          label(for="LIBRARY_ID") 아이디 
+          input(name="LIBRARY_ID" type="text" placeholder="id")
           label(for="passwd") 비밀번호 
-          input(name="passwd" type="text" placeholder="passwd")
-          label(for="kor_name") 한국이름
-          input(name="kor_name" type="text" placeholder="id")
-          label(for="eng_name") 영어이름 
-          input(name="eng_name" type="text" placeholder="id")
-          label(for="sex") 성별 
-          input(name="sex" type="text" placeholder="id")
-          label(for="home_num") 집번호 
-          input(name="home_num" type="text" placeholder="id")
-          label(for="phone_num") 휴대폰 번호 
-          input(name="phone_num" type="text" placeholder="id")
-          label(for="home_address") 집주소 
-          input(name="home_address" type="text" placeholder="id")
-          label(for="final_scholarship") 최종학력
-          input(name="final_scholarship" type="text" placeholder="id")
-          label(for="degree") 학위
-          input(name="degree" type="text" placeholder="id")
-          label(for="gradation") 졸업일
-          input(name="gradation" type="text" placeholder="id")
-          label(for="school_name") 학교 이름
-          input(name="school_name" type="text" placeholder="id")
-          label(for="work_name") 직장 이름
-          input(name="work_name" type="text" placeholder="id")
-          label(for="work_duty") 직위
-          input(name="work_duty" type="text" placeholder="id")
-          label(for="work_num") 직장 전화번호
-          input(name="work_num" type="text" placeholder="id")
-          label(for="work_address") 직장 주소
-          input(name="work_address" type="text" placeholder="id")
+          input(name="passwd" type="text" placeholder="pw")
+          label(for="name") 이름 
+          input(name="name" type="text" placeholder="name")
+          label(for="email")  
+          input(name="email" type="text" placeholder="email")
+          label(for="phone_num_1") 휴대폰 번호 
+          input(name="phone_num_1" type="text" placeholder="010")
+          input(name="phone_num_2" type="text" placeholder="0000")
+          input(name="phone_num_3" type="text" placeholder="0000")
+          label(for="MEMBERSHIP_FLAG") 멤버쉽 플래그
+          input(name="MEMBERSHIP_FLAG" type="text" placeholder="membership flag")
+          label(for="MEMBERSHIP_GROUP")  멤버쉽 그룹
+          input(name="MEMBERSHIP_GROUP" type="text" placeholder="membership_group")
+          label(for="MEMBERSHIP_LENDWEEK") 멤버쉽 대출 기간 
+          input(name="MEMBERSHIP_LENDWEEK" type="text" placeholder="membership lendweek")
+          label(for="REMARK") 주석 
+          input(name="REMARK" type="text" placeholder="remark")
+          label(for="MEMBERSHIP_DELAY") 멤버쉽 지연일 
+          input(name="MEMBERSHIP_DELAY" type="text" placeholder="membership delay")
+          label(for="DELETE_FLAG") 딜리트 플래그 
+          input(name="DELETE_FLAG" type="text" placeholder="delete_flag")
+          label(for="FAMLIY") 가족 
+          input(name="FAMILY" type="text" placeholder="family")    
           button(type="submit" name="button") 등록 
       article
         div

@@ -52,8 +52,7 @@ router.post('/', function(req, res) {
         if (e) throw error ;
         if (r.length > 0) {
           req.session.member = r[0].NAME;
-          req.session.id = r[0].LIBRARY_ID;
-          console.log();
+          req.session.LIBRARY_ID = r[0].LIBRARY_ID;
           res.redirect('/')
         }
         else {

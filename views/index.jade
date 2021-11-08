@@ -1,19 +1,59 @@
 extends layout
 
 block content
-  header
+  header(class="w3-header")
     h2 관리자 페이지
     ul
       li #{name}
       li
         a(href="logout") 로그아웃
-  nav
+  nav(id="menu")
     ul
       li
         a(href="users") 관리자 관리
+        ul
+          li
+            a(href="users/serch") 관리자검색
+          li
+            a(href="users/register") 관리자등록  
+          li
+            a(href="users/modify") 관리자수정
+          li
+            a(href="users/delete") 관리자삭제
       li
         a(href="members") 회원 관리
+        ul
+          li
+            a(href="members/serch") 회원검색
+          li
+            a(href="members/register") 회원등록  
+          li
+            a(href="members/modify") 회원수정
+          li
+            a(href="members/delete") 회원삭제
+          Li 
+            a(href="members/overdue") 연체회원 관리
       li
         a(href="books") 자료 관리
+        ul
+          li
+            a(href="books/serch") 자료검색
+          li
+            a(href="books/register") 자료등록  
+          li
+            a(href="books/modify") 자료수정
+          li
+            a(href="books/delete") 자료삭제
       li
         a(href="lendings") 대출 반납 관리 
+        ul
+          li
+            a(href="lendings/register") 대출등록
+          li
+            a(href="lendings/return") 반납등록 
+          li
+            a(href="lendings/current") 현재 대출중인 목록
+          li
+            a(href="lendings/recent") 대출반납 목록
+          li
+            a(href="lendings/holiday") 휴관일 관리

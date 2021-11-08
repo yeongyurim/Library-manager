@@ -9,12 +9,18 @@ block content
     acticle
       form(method="post")
         div
+          p 검색하고자 하는 회원의 이름을 입력해주세요
           label(for="Serch") 이용자 검색
           input(name="Serch" type="text" placeholder="검색하세요.")
-        button(type="submit" name="button") 검색
+          button(type="submit" name="button") 검색
     article
       div
-        table
+        table(align="center",class="w3-table-all")
+          tr(class="w3-blue")
+              th 이용자 ID
+              th 이름
+              th 이메일
+              th 연락처
           -for(i=0;i<data.length;i++) { user = data[i];
             tr
               td #{user.LIBRARY_ID}

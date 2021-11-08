@@ -12,3 +12,18 @@ block content
     article
       div
         table
+            tr 
+              th 대출번호
+              th 대출자 ID
+              th 자료 ID
+              th 대출 일자
+              th 반납 예정일
+              
+          -for(i=0;i<data.length;i++) { user = data[i];
+            tr
+              td #{user.LENDING_SEQ}
+              td #{user.LIBRARY_ID}
+              td #{user.RECORD_ID}
+              td #{user.LENDING_DATE}
+              td #{user.EXPECT_RETURN_DATE}
+          -}

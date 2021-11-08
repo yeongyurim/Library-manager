@@ -45,7 +45,12 @@ router.get('/', function(req, res, next) {
 
 router.get('/serch', function(req, res, next){
 
-  res.render('user_serch',{data:''});
+  client.query('select * from user',function(err,r){
+    if(err) console.log(err);
+
+    res.render('user_serch',{data:r});
+
+  })
 
 });
 
@@ -151,15 +156,16 @@ router.post('/register', function(req, res, next){
   res.render('user_register');
 
   });
+});
 
-
-  /*
-    관리자 정보 수정
-  */
+/*
+  관리자 정보 수정
+*/
 
 
 router.get('/modify', function(req, res, next){
 
+  console.log('here?');
   res.render('user_modify');
 
 });
@@ -169,6 +175,7 @@ router.post('/modify', function(req,res,next){
   var params = [];
   var params_name = [];
   var sql = "update user set "
+  var sql_params = [];
   var count = 0
 
   params[0] = req.body.id;
@@ -257,6 +264,7 @@ router.post('/modify', function(req,res,next){
 
   for (i=0;i<params.length;i++){
     if(params[i]) {
+      sql_params.push(params[i]);
       if(count==0){
         sql += params_name[i] + "= ?"
         count ++;
@@ -267,11 +275,19 @@ router.post('/modify', function(req,res,next){
     }
   }
 
-  console.log(sql);
+  sql_params.push(params[0]);
+
+  client.query(sql+" where UNION_ID = ?",sql_params,function(err,r){
+  if(err) console.log(err);
+
+  console.log(r);
+  res.render('user_modify');
 
   });
 
 });
+
+
 
 /*
   관리자 삭제

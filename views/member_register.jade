@@ -10,30 +10,42 @@ block content
       form(method="post")
         label(for="LIBRARY_ID") 아이디 
         input(name="LIBRARY_ID" type="text" placeholder="id")
+        br
         label(for="SEC_PASSWORD") 비밀번호 
         input(name="SEC_PASSWORD" type="text" placeholder="pw")
+        br
         label(for="NAME") 이름 
         input(name="NAME" type="text" placeholder="name")
-        label(for="SEC_E_MAIL")  
+        br
+        label(for="SEC_E_MAIL") 이메일
         input(name="SEC_E_MAIL" type="text" placeholder="email")
+        br
         label(for="SEC_MOBILE_PHONE1") 휴대폰 번호 
         input(name="SEC_MOBILE_PHONE1" type="text" placeholder="010")
         input(name="SEC_MOBILE_PHONE2" type="text" placeholder="0000")
         input(name="SEC_MOBILE_PHONE3" type="text" placeholder="0000")
+        br
         label(for="MEMBERSHIP_FLAG") 멤버쉽 플래그
         input(name="MEMBERSHIP_FLAG" type="text" placeholder="membership flag")
+        br
         label(for="MEMBERSHIP_GROUP")  멤버쉽 그룹
         input(name="MEMBERSHIP_GROUP" type="text" placeholder="membership_group")
+        br
         label(for="MEMBERSHIP_LENDWEEK") 멤버쉽 대출 기간 
         input(name="MEMBERSHIP_LENDWEEK" type="text" placeholder="membership lendweek")
+        br
         label(for="REMARK") 주석 
         input(name="REMARK" type="text" placeholder="remark")
+        br
         label(for="MEMBERSHIP_DELAY") 멤버쉽 지연일 
         input(name="MEMBERSHIP_DELAY" type="text" placeholder="membership delay")
+        br
         label(for="DELETE_FLAG") 딜리트 플래그 
         input(name="DELETE_FLAG" type="text" placeholder="delete_flag")
+        br
         label(for="FAMILY") 가족 
         input(name="FAMILY" type="text" placeholder="family")    
+        br
         button(type="submit" name="button") 등록 
         article
       div

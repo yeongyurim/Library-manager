@@ -8,8 +8,24 @@ block content
   section
     acticle
       form(method="post")
-        label(for="Serch") 연체 이용자
-        input(name="Serch" type="text" placeholder="검색하세요.")
-      button(type="submit" name="button") 검색
+        div
+          p 연체회원명단 
+          label(for="Serch") 이용자 검색
+          input(name="Serch" type="text" placeholder="검색하세요.")
+          button(type="submit" name="button") 검색
     article
       div
+        table
+            tr
+              th 이용자 ID
+              th 이름
+              th 이메일
+              th 연락처
+          -for(i=0;i<data.length;i++) { user = data[i];
+            tr
+              td #{user.LIBRARY_ID}
+              td #{user.NAME}
+              td #{user.SEC_E_MAIL}
+              td #{user.SEC_MOBILE_PHONE1}-#{user.SEC_MOBILE_PHONE2}-#{user.SEC_MOBILE_PHONE3}
+            -}
+        

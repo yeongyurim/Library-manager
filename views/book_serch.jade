@@ -11,10 +11,15 @@ block content
         div
           label(for="Serch") 도서 자료 검색
           input(name="Serch" type="text" placeholder="검색하세요.")
-        button(type="submit" name="button") 검색
+          button(type="submit" name="button") 검색
     article
       div
-        table
+        table(align="center",class="w3-table-all")
+          tr(class="w3-blue")
+            th 책 ID
+            th ISBN코드
+            th 저자 ID
+            th 책 제목
           -for(i=0;i<data.length;i++) { user = data[i];
             tr
               td #{user.RECORD_ID}

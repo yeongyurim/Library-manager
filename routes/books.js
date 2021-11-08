@@ -38,7 +38,12 @@ router.get('/', function(req, res, next) {
 
 router.get('/serch', function(req, res, next){
 
-  res.render('book_serch',{data:''});
+  client.query('select * from book',function(err,r){
+    if(err) console.log(err);
+
+    res.render('book_serch',{data:r});
+    
+  })
 
 });
 
@@ -138,6 +143,55 @@ router.post('/delete', function(req, res, next){
 
 router.get('/modify', function(req, res, next){
   res.render('book_modify');
+});
+
+router.post('/modify', function(req, res, next){
+
+  var params = [req.body.RECORD_ID,req.body.ISBN_CODE,req.body.EXTRA_CODE,req.body.CLASS_ID
+    ,req.body.WRITER_NAME1,req.body.WRITER_NAME2,req.body.WRITER_NAME3
+    ,req.body.AUTHOR_NAME1,req.body.AUTHOR_NAME2,req.body.AUTHOR_NAME3
+    ,req.body.TRANSLATOR_NAME,req.body.TRANSLATOR_NAME2,req.body.TITLE_OF_BOOK
+    ,req.body.ORIGINAL_TITLE,req.body.ENGLISH_TITLE,req.body.SECONDARY_TITLE
+    ,req.body.SERIES_TITLE,req.body.ISSUE_COUNT,req.body.ISSUE_NATION
+    ,req.body.ISSUE_COMPANY,req.body.TOTAL_PAGE,req.body.ILLUSTRATION
+    ,req.body.BOOK_SIZE,req.body.BOOK_PRICE,req.body.THEME_WORD1
+    ,req.body.THEME_WORD2,req.body.THEME_WORD3,req.body.THEME_WORD4,req.body.THEME_WORD5];
+
+  var params_name = ["RECORD_ID","ISBN_CODE","EXTRA_CODE","CLASS_ID",
+  "WRITER_NAME1","WRITER_NAME2","WRITER_NAME3","AUTHOR_NAME1","AUTHOR_NAME2",
+  "AUTHOR_NAME3","TRANSLATOR_NAME","TRANSLATOR_NAME2","TITLE_OF_BOOK","ORIGINAL_TITLE",
+  "ENGLISH_TITLE","SECONDARY_TITLE","SERIES_TITLE","ISSUE_COUNT","ISSUE_NATION",
+  "ISSUE_COMPANY","TOTAL_PAGE","ILLUSTRATION","BOOK_SIZE","BOOK_PRICE",
+  "THEME_WORD1","THEME_WORD2","THEME_WORD3","THEME_WORD4","THEME_WORD5"];
+
+  var sql = "update book set "
+  var sql_params = [];
+  var count = 0
+
+  console.log(params_name,params);
+
+  for (i=0;i<params.length;i++){
+    if(params[i]) {
+      sql_params.push(params[i]);
+      if(count==0) {
+        sql += params_name[i] + "= ?"
+        count ++;
+      }
+      else {
+        sql += ","+ params_name[i] + "= ?"
+      }
+    }
+  }
+
+  sql_params.push(params[0]);
+
+  client.query(sql+" where RECORD_ID = ?",sql_params,function(err,r){
+  if(err) console.log(err);
+
+  console.log(r);
+  res.render('member_modify');
+
+  });
 });
 
 

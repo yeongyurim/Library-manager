@@ -9,9 +9,23 @@ block content
     acticle
       form(method="post")
         div
-          h2 도서 대출 현황 
+          h2 도서 대출 일지
     article
       div
         table
-      
+            tr
+              th 대출 번호
+              th 대출자 ID
+              th 자료 ID
+              th 대출 일자
+              th 반납 일자
+              
+          -for(i=0;i<data.length;i++) { user = data[i];
+            tr
+              td #{user.LENDING_SEQ}
+              td #{user.LIBRARY_ID}
+              td #{user.RECORD_ID}
+              td #{user.LENDING_DATE}
+              td #{user.RETURN_DATE}
+          -}
         

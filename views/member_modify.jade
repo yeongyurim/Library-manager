@@ -1,53 +1,112 @@
-extends layout
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/register.css')
+    link(rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css")
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+  body
+    nav(id="menu" class="w3-header")
+      ul
+        li
+          a(href="/") /
+        li
+          a(href="/members/modify") 관리자 관리 
+          ul
+            li
+              a(href="/users/serch") 관리자검색 
+            li
+              a(href="/users/register") 관리자등록  
+            li
+              a(href="/users/modify") 관리자수정 
+            li
+              a(href="/users/delete") 관리자삭제 
+        li
+          a(href="/members/modify") 회원 관리 
+          ul
+            li
+              a(href="/members/serch") 회원검색 
+            li
+              a(href="/members/register") 회원등록  
+            li
+              a(href="/members/modify") 회원수정 
+            li
+              a(href="/members/delete") 회원삭제 
+            li 
+              a(href="/members/overdue") 연체회원 관리 
+        li
+          a(href="/members/modify") 자료 관리 
+          ul
+            li
+              a(href="/books/serch") 자료검색 
+            li
+              a(href="/books/register") 자료등록  
+            li
+              a(href="/books/modify") 자료수정 
+            li
+              a(href="/books/delete") 자료삭제 
+        li
+          a(href="/members/modify") 대출 반납 관리 
+          ul
+            li
+              a(href="/lendings/register") 대출등록 
+            li
+              a(href="/lendings/return") 반납등록 
+            li
+              a(href="/lendings/current") 현재 대출중인 목록 
+            li
+              a(href="/lendings/recent") 대출반납 목록 
+            li
+              a(href="/lendings/holiday") 휴관일 등록
+            li
+              a(href="/lendings/holiday/delete") 휴관일 삭제
 
-block content
-
-  header
+  header(align="center")
     h2 Member Modify
-  
-    section
-      h2 회원 수정
-      acticle
-        form(method="post")
-          label(for="LIBRARY_ID") 아이디 
-          input(name="LIBRARY_ID" type="text" placeholder="id")
-          br
-          label(for="SEC_PASSWORD") 비밀번호 
-          input(name="SEC_PASSWORD" type="text" placeholder="pw")
-          br
-          label(for="NAME") 이름 
-          input(name="NAME" type="text" placeholder="name")
-          br
-          label(for="SEC_E_MAIL") 이메일
-          input(name="SEC_E_MAIL" type="text" placeholder="email")
-          br
-          label(for="SEC_MOBILE_PHONE1") 휴대폰 번호 
-          input(name="SEC_MOBILE_PHONE1" type="text" placeholder="010")
-          input(name="SEC_MOBILE_PHONE2" type="text" placeholder="0000")
-          input(name="SEC_MOBILE_PHONE3" type="text" placeholder="0000")
-          br
-          label(for="MEMBERSHIP_FLAG") 멤버쉽 플래그
-          input(name="MEMBERSHIP_FLAG" type="text" placeholder="membership flag")
-          br
-          label(for="MEMBERSHIP_GROUP")  멤버쉽 그룹
-          input(name="MEMBERSHIP_GROUP" type="text" placeholder="membership_group")
-          br
-          label(for="MEMBERSHIP_LENDWEEK") 멤버쉽 대출 기간 
-          input(name="MEMBERSHIP_LENDWEEK" type="text" placeholder="membership lendweek")
-          br
-          label(for="REMARK") 주석 
-          input(name="REMARK" type="text" placeholder="remark")
-          br
-          label(for="MEMBERSHIP_DELAY") 멤버쉽 지연일 
-          input(name="MEMBERSHIP_DELAY" type="text" placeholder="membership delay")
-          br
-          label(for="DELETE_FLAG") 딜리트 플래그 
-          input(name="DELETE_FLAG" type="text" placeholder="delete_flag")
-          br
-          label(for="FAMLIY") 가족 
-          input(name="FAMILY" type="text" placeholder="family")    
-          br
-          button(type="submit" name="button") 등록 
-      article
-        div
-        
+    h2 회원 수정
+  section
+    p 아이디를 기준으로 정보 수정이 이뤄집니다.
+    acticle(class="w3-table w3-gray w3-text-white")
+      form(method="post")
+        br
+        label(for="LIBRARY_ID") *아이디 
+        input(name="LIBRARY_ID" type="text" placeholder="id")
+        br
+        label(for="SEC_PASSWORD") 비밀번호 
+        input(name="SEC_PASSWORD" type="text" placeholder="pw")
+        br
+        label(for="NAME") 이름 
+        input(name="NAME" type="text" placeholder="name")
+        br
+        label(for="SEC_E_MAIL") 이메일
+        input(name="SEC_E_MAIL" type="text" placeholder="email")
+        br
+        label(for="SEC_MOBILE_PHONE1") 휴대폰 번호 
+        input(name="SEC_MOBILE_PHONE1" type="text" placeholder="010")
+        input(name="SEC_MOBILE_PHONE2" type="text" placeholder="0000")
+        input(name="SEC_MOBILE_PHONE3" type="text" placeholder="0000")
+        br
+        label(for="MEMBERSHIP_FLAG") 멤버쉽 플래그
+        input(name="MEMBERSHIP_FLAG" type="text" placeholder="membership flag")
+        br
+        label(for="MEMBERSHIP_GROUP")  멤버쉽 그룹
+        input(name="MEMBERSHIP_GROUP" type="text" placeholder="membership_group")
+        br
+        label(for="MEMBERSHIP_LENDWEEK") 멤버쉽 대출 기간 
+        input(name="MEMBERSHIP_LENDWEEK" type="text" placeholder="membership lendweek")
+        br
+        label(for="REMARK") 주석 
+        input(name="REMARK" type="text" placeholder="remark")
+        br
+        label(for="MEMBERSHIP_DELAY") 멤버쉽 지연일 
+        input(name="MEMBERSHIP_DELAY" type="text" placeholder="membership delay")
+        br
+        label(for="DELETE_FLAG") 딜리트 플래그 
+        input(name="DELETE_FLAG" type="text" placeholder="delete_flag")
+        br
+        label(for="FAMLIY") 가족 
+        input(name="FAMILY" type="text" placeholder="family")    
+        button(type="submit" name="button") 등록 
+        br
+        br

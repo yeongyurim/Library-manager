@@ -1,100 +1,162 @@
-extends layout
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/register.css')
+    link(rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css")
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+  body
+    nav(id="menu" class="w3-header")
+      ul
+        li
+          a(href="/") /
+        li
+          a(href="/books/modify") 관리자 관리 
+          ul
+            li
+              a(href="/users/serch") 관리자검색 
+            li
+              a(href="/users/register") 관리자등록  
+            li
+              a(href="/users/modify") 관리자수정 
+            li
+              a(href="/users/delete") 관리자삭제 
+        li
+          a(href="/books/modify") 회원 관리 
+          ul
+            li
+              a(href="/members/serch") 회원검색 
+            li
+              a(href="/members/register") 회원등록  
+            li
+              a(href="/members/modify") 회원수정 
+            li
+              a(href="/members/delete") 회원삭제 
+            li 
+              a(href="/members/overdue") 연체회원 관리 
+        li
+          a(href="/books/modify") 자료 관리 
+          ul
+            li
+              a(href="/books/serch") 자료검색 
+            li
+              a(href="/books/register") 자료등록  
+            li
+              a(href="/books/modify") 자료수정 
+            li
+              a(href="/books/delete") 자료삭제 
+        li
+          a(href="/books/modify") 대출 반납 관리 
+          ul
+            li
+              a(href="/lendings/register") 대출등록 
+            li
+              a(href="/lendings/return") 반납등록 
+            li
+              a(href="/lendings/current") 현재 대출중인 목록 
+            li
+              a(href="/lendings/recent") 대출반납 목록 
+            li
+              a(href="/lendings/holiday") 휴관일 등록
+            li
+              a(href="/lendings/holiday/delete") 휴관일 삭제 
 
-block content
-
-  header
+  header(align="center")
     h2 Book Modify
-  
-  section
     h2 자료 수정
-  acticle
-    form(method="post")
-      label(for="RECORD_ID") 자료 id
-      input(name="RECORD_ID" type="record id" placeholder="id")
-      br
-      label(for="ISBN_CODE") ISBN 코드
-      input(name="ISBN_CODE" type="text" placeholder="isbn")
-      br
-      label(for="EXTRA_CODE") 추가 코드 
-      input(name="EXTRA_CODE" type="text" placeholder="extra code")
-      br
-      label(for="CLASS_ID") class id
-      input(name="CLASS_ID" type="text" placeholder="class id")
-      br
-      label(for="WRITER_NAME1") 작가 이름  
-      input(name="WRITER_NAME1" type="text" placeholder="writer 1")
-      label(for="AUTHOR_NAME1") 저자 이름  
-      input(name="AUTHOR_NAME1" type="text" placeholder="author 1")
-      br
-      label(for="WRITER_NAME2") 작가 이름  
-      input(name="WRITER_NAME2" type="text" placeholder="writer 2")
-      label(for="AUTHOR_NAME2") 저자 이름  
-      input(name="AUTHOR_NAME2" type="text" placeholder="author 2")
-      br
-      label(for="WRITER_NAME3") 작가 이름  
-      input(name="WRITER_NAME3" type="text" placeholder="writer 3")
-      label(for="AUTHOR_NAME3") 저자 이름  
-      input(name="AUTHOR_NAME3" type="text" placeholder="author 3")
-      br
-      label(for="TRANSLATOR_NAME") 옮긴 이   
-      input(name="TRANSLATOR_NAME" type="text" placeholder="translator1")
-      br
-      label(for="TRANSLATOR_NAME2") 옮긴 이   
-      input(name="TRANSLATOR_NAME2" type="text" placeholder="translator2")
-      br
-      label(for="TITLE_OF_BOOK") 책 이름
-      input(name="TITLE_OF_BOOK" type="text" placeholder="title of book")
-      br
-      label(for="ORIGINAL_TITLE")  책 원어이름
-      input(name="ORIGINAL_TITLE" type="text" placeholder="original title")
-      br
-      label(for="ENGLiSH_TITLE")  책 영어이름 
-      input(name="ENGLISH_TITLE" type="text" placeholder="english title")
-      br
-      label(for="SECONDARY_TITLE")  부제목
-      input(name="SECONDARY_TITLE" type="text" placeholder="secondary title")
-      br
-      label(for="SERIES_TITLE")  시리즈 이름 
-      input(name="SERIES_TITLE" type="text" placeholder="series title")
-      br
-      label(for="ISSUE_COUNT")  발간 호 수
-      input(name="ISSUE_COUNT" type="text" placeholder="issue count")
-      br
-      label(for="ISSUE_NATION")  발간 국가 
-      input(name="ISSUE_NATION" type="text" placeholder="issue nation")
-      br
-      label(for="ISSUE_COMPANY")  발간 회사 
-      input(name="ISSUE_COMPANY" type="text" placeholder="issue company")
-      br
-      label(for="TOTAL_PAGE")  페이지 수 
-      input(name="TOTAL_PAGE" type="text" placeholder="total page")
-      br
-      label(for="ILLUSTRATION")  일러스트 
-      input(name="ILLUSTRATION" type="text" placeholder="illustration")
-      br
-      label(for="BOOK_SIZE")  책 크기  
-      input(name="BOOK_SIZE" type="text" placeholder="book size")
-      br
-      label(for="BOOK_PRICE")  책 가격
-      input(name="BOOK_PRICE" type="text" placeholder="book price")
-      br
-      label(for="THEME_WORD1")  주제어 
-      input(name="THEME_WORD1" type="text" placeholder="theme word")
-      br
-      label(for="THEME_WORD2")  주제어 
-      input(name="THEME_WORD2" type="text" placeholder="theme word")
-      br
-      label(for="THEME_WORD3")  주제어 
-      input(name="THEME_WORD3" type="text" placeholder="theme word")
-      br
-      label(for="THEME_WORD4")  주제어 
-      input(name="THEME_WORD4" type="text" placeholder="theme word")
-      br
-      label(for="THEME_WORD5")  주제어 
-      input(name="THEME_WORD5" type="text" placeholder="theme word")
-      br
-      button(type="submit" name="button") 수정
-  article
-      div
-        table
-        
+  section
+    p 아이디를 기준으로 정보 수정이 이뤄집니다.
+    acticle(class="w3-table w3-gray w3-text-white")
+      form(method="post")
+        br
+        label(for="RECORD_ID") 자료 id
+        input(name="RECORD_ID" type="record id" placeholder="id")
+        br
+        label(for="ISBN_CODE") ISBN 코드
+        input(name="ISBN_CODE" type="text" placeholder="isbn")
+        br
+        label(for="EXTRA_CODE") 추가 코드 
+        input(name="EXTRA_CODE" type="text" placeholder="extra code")
+        br
+        label(for="CLASS_ID") class id
+        input(name="CLASS_ID" type="text" placeholder="class id")
+        br
+        label(for="WRITER_NAME1") 작가 이름  
+        input(name="WRITER_NAME1" type="text" placeholder="writer 1")
+        label(for="AUTHOR_NAME1") 저자 이름  
+        input(name="AUTHOR_NAME1" type="text" placeholder="author 1")
+        br
+        label(for="WRITER_NAME2") 작가 이름  
+        input(name="WRITER_NAME2" type="text" placeholder="writer 2")
+        label(for="AUTHOR_NAME2") 저자 이름  
+        input(name="AUTHOR_NAME2" type="text" placeholder="author 2")
+        br
+        label(for="WRITER_NAME3") 작가 이름  
+        input(name="WRITER_NAME3" type="text" placeholder="writer 3")
+        label(for="AUTHOR_NAME3") 저자 이름  
+        input(name="AUTHOR_NAME3" type="text" placeholder="author 3")
+        br
+        label(for="TRANSLATOR_NAME") 옮긴 이   
+        input(name="TRANSLATOR_NAME" type="text" placeholder="translator1")
+        br
+        label(for="TRANSLATOR_NAME2") 옮긴 이   
+        input(name="TRANSLATOR_NAME2" type="text" placeholder="translator2")
+        br
+        label(for="TITLE_OF_BOOK") 책 이름
+        input(name="TITLE_OF_BOOK" type="text" placeholder="title of book")
+        br
+        label(for="ORIGINAL_TITLE")  책 원어이름
+        input(name="ORIGINAL_TITLE" type="text" placeholder="original title")
+        br
+        label(for="ENGLiSH_TITLE")  책 영어이름 
+        input(name="ENGLISH_TITLE" type="text" placeholder="english title")
+        br
+        label(for="SECONDARY_TITLE")  부제목
+        input(name="SECONDARY_TITLE" type="text" placeholder="secondary title")
+        br
+        label(for="SERIES_TITLE")  시리즈 이름 
+        input(name="SERIES_TITLE" type="text" placeholder="series title")
+        br
+        label(for="ISSUE_COUNT")  발간 호 수
+        input(name="ISSUE_COUNT" type="text" placeholder="issue count")
+        br
+        label(for="ISSUE_NATION")  발간 국가 
+        input(name="ISSUE_NATION" type="text" placeholder="issue nation")
+        br
+        label(for="ISSUE_COMPANY")  발간 회사 
+        input(name="ISSUE_COMPANY" type="text" placeholder="issue company")
+        br
+        label(for="TOTAL_PAGE")  페이지 수 
+        input(name="TOTAL_PAGE" type="text" placeholder="total page")
+        br
+        label(for="ILLUSTRATION")  일러스트 
+        input(name="ILLUSTRATION" type="text" placeholder="illustration")
+        br
+        label(for="BOOK_SIZE")  책 크기  
+        input(name="BOOK_SIZE" type="text" placeholder="book size")
+        br
+        label(for="BOOK_PRICE")  책 가격
+        input(name="BOOK_PRICE" type="text" placeholder="book price")
+        br
+        label(for="THEME_WORD1")  주제어 
+        input(name="THEME_WORD1" type="text" placeholder="theme word")
+        br
+        label(for="THEME_WORD2")  주제어 
+        input(name="THEME_WORD2" type="text" placeholder="theme word")
+        br
+        label(for="THEME_WORD3")  주제어 
+        input(name="THEME_WORD3" type="text" placeholder="theme word")
+        br
+        label(for="THEME_WORD4")  주제어 
+        input(name="THEME_WORD4" type="text" placeholder="theme word")
+        br
+        label(for="THEME_WORD5")  주제어 
+        input(name="THEME_WORD5" type="text" placeholder="theme word")
+        button(type="submit" name="button") 수정
+        br
+        br
+    article
+        div
+          table
+          

@@ -2,29 +2,91 @@ extends layout
 
 block content
 
-  header
+  nav(id="menu" class="w3-header")
+      ul
+        li
+          a(href="/") /
+        li
+          a(href="/books/serch") 관리자 관리
+          ul
+            li
+              a(href="/users/serch") 관리자검색
+            li
+              a(href="/users/register") 관리자등록  
+            li
+              a(href="/users/modify") 관리자수정
+            li
+              a(href="/users/delete") 관리자삭제
+        li
+          a(href="/books/serch") 회원 관리
+          ul
+            li
+              a(href="/members/serch") 회원검색
+            li
+              a(href="/members/register") 회원등록  
+            li
+              a(href="/members/modify") 회원수정
+            li
+              a(href="/members/delete") 회원삭제
+            Li 
+              a(href="/members/overdue") 연체회원 관리
+        li
+          a(href="/books/serch") 자료 관리
+          ul
+            li
+              a(href="/books/serch") 자료검색
+            li
+              a(href="/books/register") 자료등록  
+            li
+              a(href="/books/modify") 자료수정
+            li
+              a(href="/books/delete") 자료삭제
+        li
+          a(href="/books/serch") 대출 반납 관리 
+          ul
+            li
+              a(href="/lendings/register") 대출등록
+            li
+              a(href="/lendings/return") 반납등록 
+            li
+              a(href="/lendings/current") 현재 대출중인 목록
+            li
+              a(href="/lendings/recent") 대출반납 목록
+            li
+              a(href="/lendings/holiday") 휴관일 등록
+            li
+              a(href="/lendings/holiday/delete") 휴관일 삭제
+
+  header(class="w3-header w3-center")
     h2 Book Serch
   
-  section
-    acticle
+  section(class="w3-cyan w3-center")
+    acticle(class="w3-text-white")
+      h2 검색할 자료의 이름을 입력하세요
       form(method="post")
-        div
-          label(for="Serch") 도서 자료 검색
-          input(name="Serch" type="text" placeholder="검색하세요.")
-          button(type="submit" name="button") 검색
+        input(type="radio" name ="radio" value="RECORD_ID") 
+        |ID 
+        input(type="radio" name ="radio" value="ISBN_CODE") 
+        |ISBN 
+        input(type="radio" name ="radio" value="WRITER_NAME1") 
+        |저자 이름
+        input(type="radio" name ="radio" value="TITLE_OF_BOOK" checked="checked") 
+        |책 제목
+        input(name="value" type="text" placeholder="검색하세요.")
+        button(type="submit" name="button") 검색
     article
       div
         table(align="center",class="w3-table-all")
           tr(class="w3-blue")
             th 책 ID
             th ISBN코드
-            th 저자 ID
+            th 저자 이름
             th 책 제목
           -for(i=0;i<data.length;i++) { user = data[i];
             tr
               td #{user.RECORD_ID}
               td #{user.ISBN_CODE}
-              td #{user.AUTHOR_ID}
+              td #{user.WRITER_NAME1}
               td #{user.TITLE_OF_BOOK}
               
           -}

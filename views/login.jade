@@ -2,9 +2,10 @@ extends layout
 
 block content
   form(method="post" id="authForm")
-    div
+    header(class="w3-center")
       label(for="passwd")
       input(type="id" name="id" placeholder="ID")
-      label(for="passwd")
-      input(type="passwd" name="passwd" placeholder="passwd")
-    button(type="submit") 로그인
+      label(for="password")
+      input(type="password" name="passwd" placeholder="passwd")
+      button(type="submit") 로그인
+      p 시험용 관리자 계정(id:admin,password:admin1234)

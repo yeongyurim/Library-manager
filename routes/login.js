@@ -29,11 +29,12 @@ client.connect((err) => {
 /** DBMS Connected
 */
 
-/* GET home page. */
+// GET /
 router.get('/', function(req, res, next) {
   res.render('login');
 });
 
+// POST /
 router.post('/', function(req, res) {
 
   var paramID = req.body.id || req.query.id;
@@ -48,18 +49,10 @@ router.post('/', function(req, res) {
       res.redirect('/')
     }
     else {
-      client.query('select * from member where LIBRARY_ID = ? and SEC_PASSWORD = ?',[paramID,pw] ,function (e,r) {
-        if (e) throw error ;
-        if (r.length > 0) {
-          req.session.member = r[0].NAME;
-          req.session.LIBRARY_ID = r[0].LIBRARY_ID;
-          res.redirect('/')
-        }
-        else {
-          console.log('비밀번호가 잘못되었습니다.');
-        }
-      });
+      console.log('비밀번호가 잘못되었습니다.');
+      res.redirect('/');
     }
   });
 });
+
 module.exports = router;

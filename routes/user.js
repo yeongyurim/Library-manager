@@ -50,26 +50,47 @@ router.get('/serch', function(req, res, next){
 
     res.render('user_serch',{data:r});
 
-  })
+  });
 
 });
 
 
 router.post('/serch', function(req,res,next){
 
-  var name = req.body.name;
+  var value = req.body.value;
+  var radio = req.body.radio;
 
-  client.query('select * from user where KOREAN_NAME = ?',
-    [name],
-    function(err,r){
+  // serch by id
+  if(radio == 'id'){
 
-      if(err) console.log(err);
-
-      res.render('user_serch',{data:r});
-
-      console.log(r);
-    });
-
+    client.query('select * from user where UNION_ID = ?',
+      [value],
+      function(err,r){
+        if(err) throw error;
+        if (r.length > 0) {
+          res.render('user_serch',{data: r });
+        }
+        else {
+          res.render('user_serch',{data:''});
+          console.log('검색결과가 없습니다.')
+        }
+      });
+  }
+// serch by name
+  else{
+    client.query('select * from user where KOREAN_NAME = ?',
+      [value],
+      function(err,r){
+        if(err) throw error;
+        if (r.length > 0) {
+          res.render('user_serch', {data: r } );
+        }
+        else {
+          res.render('user_serch',{data:''});
+          console.log('검색결과가 없습니다.')
+        }
+      });
+  }
 });
 
 /*
@@ -295,7 +316,12 @@ router.post('/modify', function(req,res,next){
 
 router.get('/delete', function(req,res,next){
 
-  res.render('user_delete')
+  client.query('select * from user',function(err,r){
+    if(err) console.log(err);
+
+    res.render('user_delete',{data:r});
+
+  });
 
 });
 
@@ -309,7 +335,12 @@ router.post('/delete', function(req, res, next){
     if(err) console.log(err);
 
     console.log(r)
-    res.render('user_delete',{data:r});
+    client.query('select * from user',function(err,r){
+      if(err) console.log(err);
+
+      res.render('user_serch',{data:r});
+
+    });
 
   });
 });

@@ -39,14 +39,18 @@ router.get('/', function(req, res, next) {
   res.render('member');
 });
 
+// function that if the param is less than 10 add 0 and make String type
 function zeroAdder(a) {
   if(a<10) a = '0'+a
   a = '' + a;
   return a;
 }
 
-// 이용자 검색
+/*
+  SERCH INFORMATION
+*/
 
+// GET SERCH
 router.get('/serch', function(req, res, next){
 
   client.query('select * from member',function(err,r){
@@ -57,32 +61,52 @@ router.get('/serch', function(req, res, next){
 
 });
 
+// POST SERCH
 router.post('/serch', function(req, res, next){
 
-  var paramName = req.body.Serch || req.query.Serch;
+  var value = req.body.value;
+  var radio = req.body.radio;
 
-  client.query('select * from member where NAME = ?',[paramName] ,function (e,r) {
-
-    if (e) throw error ;
-
-    if (r.length > 0) {
-
-      res.render('member_serch', {data: r } );
-
-    }
-    else {
-      res.render('member_serch',{data:''});
-      console.log('검색결과가 없습니다.')
-    }
-
-  });
+// serch by id
+  if(radio == 'id'){
+    client.query('select * from member where LIBRARY_ID = ?',[value],
+    function (err,r) {
+      if(err) throw error;
+      if (r.length > 0) {
+        res.render('member_serch', {data: r } );
+      }
+      else {
+        res.render('member_serch',{data:''});
+        console.log('검색결과가 없습니다.')
+      }
+    });
+  }
+// serch by name
+  else {
+    client.query('select * from member where NAME = ?',[value],
+    function (e,r) {
+      if (e) throw error ;
+      if (r.length > 0) {
+        res.render('member_serch', {data: r } );
+      }
+      else {
+        res.render('member_serch',{data:''});
+        console.log('검색결과가 없습니다.')
+      }
+    });
+  }
 });
-// 이용자 등록
 
+/*
+  REGISTER INFORMATION
+*/
+
+// GET register
 router.get('/register', function(req, res, next){
-  res.render('member_register',{ msg:'kk' });
+  res.render('member_register',{ msg:'' });
 });
 
+//POST register
 router.post('/register', function(req, res, next){
 
   var params_name = []
@@ -117,16 +141,17 @@ router.post('/register', function(req, res, next){
 });
 
 /*
-  관리자 정보 수정
+  MODIFY INFORMATION
 */
 
-
+//GET MODIFY
 router.get('/modify', function(req, res, next){
 
   res.render('member_modify');
 
 });
 
+//POST MODIFY
 router.post('/modify', function(req,res,next){
 
   var params = [req.body.LIBRARY_ID,req.body.SEC_PASSWORD,req.body.NAME,req.body.SEC_E_MAIL,req.body.SEC_MOBILE_PHONE1,
@@ -168,14 +193,20 @@ router.post('/modify', function(req,res,next){
 
 });
 
+/*
+  DELETE INFORMATION
+*/
 
-
-// 이용자 삭제
-
+// GET DELETE
 router.get('/delete', function(req, res, next){
-  res.render('member_delete');
+  client.query('select * from member',function(err,r){
+    if(err) console.log(err);
+
+    res.render('member_delete',{data:r});
+  });
 });
 
+//POST DELETE
 router.post('/delete', function(req, res, next){
 
   var id = req.body.ID;
@@ -185,36 +216,51 @@ router.post('/delete', function(req, res, next){
   function(err,r){
     if(err) console.log(err);
 
-    res.render('member_delete',{data:r});
+    client.query('select * from member',function(err,r){
+      if(err) console.log(err);
+
+      res.render('member_delete',{data:r});
+    });
   });
 });
 
-// 연체회원 관리
+/*
+  SERCH MEMBER WHO NOW OVERDUED
+*/
 
+// GET OVERDUE
 router.get('/overdue', function(req, res, next){
   var today = new Date();
   var today_MD = zeroAdder(today.getMonth()+1)+zeroAdder(today.getDate());
   var today = today.getFullYear() + today_MD;
-  var overdue = []
-  var dup = '';
-  var abc = '';
-  client.query('select * from lending where ? > EXPECT_RETURN_DATE and RETURN_DATE is NULL',[today],
-  function(err,r){
-    if(err) console.log(err);
-    for(var i=0; i<r.length; i++){
-      client.query('select * from member where LIBRARY_ID = ?',[r[i].LIBRARY_ID],
-      function(err,t){
-        console.log(i);
-        if(dup!=abc) {
-          overdue.push(t);
-          console.log(abc);
-        }
-        dup = abc;
-        if(err) console.log(err);
-        if(i==r.length){
-        };
-      });
-    };
+  client.query('select * from lending join member on lending.library_id = member.library_id join book on lending.record_id = book.record_id  where ? > EXPECT_RETURN_DATE and RETURN_DATE is NULL',[today],
+  function(e,r){
+    if(e) console.log(e);
+    if(r){
+      res.render('member_overdue',{data:r});
+    } else {
+      console.log('검색결과가 없습니다.');
+      res.render('member_overdue',{data:''});
+    }
+  });
+});
+
+//POST OVERDUE
+router.post('/overdue',function(req, res, next){
+  var value = req.body.value;
+  var radio = req.body.radio;
+  var today = new Date();
+  var today_MD = zeroAdder(today.getMonth()+1)+zeroAdder(today.getDate());
+  var today = today.getFullYear() + today_MD;
+  client.query('select * from lending join member on lending.library_id = member.library_id join book on lending.record_id = book.record_id where ? > EXPECT_RETURN_DATE and RETURN_DATE is NULL and '+radio+' = ?',[today,value],
+  function(e,r){
+    if(e) console.log(e);
+    if(r){
+      res.render('member_overdue',{data:r});
+    }else {
+      console.log('검색결과가 없습니다.');
+      res.render('member_overdue',{data:''});
+    }
   });
 });
 

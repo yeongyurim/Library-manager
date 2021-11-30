@@ -2,12 +2,87 @@ extends layout
 
 block content
 
-  header
+  nav(id="menu" class="w3-header")
+    ul
+      li
+        a(href="/") /
+      li
+        a(href="/users/delete") 관리자 관리
+        ul
+          li
+            a(href="/users/serch") 관리자검색
+          li
+            a(href="/users/register") 관리자등록  
+          li
+            a(href="/users/modify") 관리자수정
+          li
+            a(href="/users/delete") 관리자삭제
+      li
+        a(href="/users/delete") 회원 관리
+        ul
+          li
+            a(href="/members/serch") 회원검색
+          li
+            a(href="/members/register") 회원등록  
+          li
+            a(href="/members/modify") 회원수정
+          li
+            a(href="/members/delete") 회원삭제
+          Li 
+            a(href="/members/overdue") 연체회원 관리
+      li
+        a(href="/users/delete") 자료 관리
+        ul
+          li
+            a(href="/books/serch") 자료검색
+          li
+            a(href="/books/register") 자료등록  
+          li
+            a(href="/books/modify") 자료수정
+          li
+            a(href="/books/delete") 자료삭제
+      li
+        a(href="/users/delete") 대출 반납 관리 
+        ul
+          li
+            a(href="/lendings/register") 대출등록
+          li
+            a(href="/lendings/return") 반납등록 
+          li
+            a(href="/lendings/current") 현재 대출중인 목록
+          li
+            a(href="/lendings/recent") 대출반납 목록
+          li
+            a(href="/lendings/holiday") 휴관일 등록
+          li
+            a(href="/lendings/holiday/delete") 휴관일 삭제
+
+  header(class="w3-header w3-center")
     h2 Administer Delete
   
-  section
+  section(class="w3-cyan w3-center")
+    header(class="w3-text-white")
+      h2 삭제할 회원의 아이디를 입력하세요
     acticle
       form(method="post")
         label(for="ID") 관리자 삭제 (아이디)
         input(name="ID" type="text" placeholder="검색하세요.")
         button(type="submit" name="button") 삭제
+    article
+      div
+        table(align="center",class="w3-table-all")
+          tr(class="w3-blue")
+            th 관리자 ID
+            th 관리자 이름
+            th 관리자 이메일
+            th 휴대폰 번호
+              
+          -for(i=0;i<data.length;i++) { user = data[i];
+            tr
+              td #{user.UNION_ID}
+              td #{user.KOREAN_NAME}
+              td #{user.SEC_E_MAIL}
+              td #{user.SEC_MOBILE_PHONE1} #{user.SEC_MOBILE_PHONE2} #{user.SEC_MOBILE_PHONE3}
+          -}
+              
+              

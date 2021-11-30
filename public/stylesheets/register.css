@@ -12,11 +12,6 @@
 		text-decoration: none;
 		color:#333;
 	}
-
-	img {
-		object-fit:cover;
-		width:1200px;
-	}
 /* 글자크기를 16px 맑은 고딕 굵게하고 width넓이 700, 높이 50만큼 배경색은 #ccc, 글자색은 검정색, 라인높이50px
 menu박스 가운데정렬, 글자가운데 정렬 */
 	#menu {
@@ -41,7 +36,7 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 		display:none;
 		position: absolute;
 		font-size:14px;
-		background:#00CED1;
+		background:darkgray;
 	}
 
   #menu > ul > li:hover > ul {
@@ -49,7 +44,7 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 	}
 
   #menu > ul > li > ul > li:hover {
-		background: orange;
+		background: gray;
 		transition: ease 1s;
 		}
 

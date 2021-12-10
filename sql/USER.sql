@@ -1,6 +1,7 @@
 CREATE TABLE USER
 (
   UNION_ID                  varchar(8 )    NOT NULL PRIMARY KEY,
+  name                      varchar(20)    NOT NULL,
   passwd                    varchar(20)    NOT NULL,
   KOREAN_NAME               varchar(40 ),
   ENGLISH_NAME              varchar(50 ),

@@ -1,0 +1,12 @@
+CREATE TABLE HOLIDAY
+(
+  YEAR            VARCHAR(4 )              NOT NULL,
+  MONTH_DAY       VARCHAR(4 )              NOT NULL,
+  TYPE            VARCHAR(1 )              NOT NULL,
+  REMARKS         VARCHAR(100 ),
+  INSERT_DATE     DATE,
+  INSERT_USER_ID  VARCHAR(20 ),
+  UPDATE_DATE     DATE,
+  UPDATE_USER_ID  VARCHAR(20 ),
+  PRIMARY KEY (YEAR, MONTH_DAY, TYPE)
+)

@@ -12,7 +12,7 @@ try{
     port : 3333,
     user:'root',
     password:'123456',
-    database: 'book'
+    database: 'nbook'
 
   });
 }

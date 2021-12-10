@@ -12,7 +12,7 @@ try{
     port : 3333,
     user:'root',
     password:'123456',
-    database: 'book'
+    database: 'nbook'
 
   });
 }
@@ -43,11 +43,9 @@ router.get('/', function(req, res, next) {
         res.render('index',{name : user, data:r});
       }
       else {
-        res.render('index',{name : user});
+        res.render('index',{name : user, data:''});
       }
     });
-  }
-  else if(req.session.member){
   }
   else{
     res.redirect('/login')

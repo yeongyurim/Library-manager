@@ -84,7 +84,7 @@ block content
             th 대출자 이름
             th 자료 이름 
             th 대출 일자
-            th 반납 예정일
+            th 반납 일자
             
           -for(i=0;i<data.length;i++) { user = data[i];
             tr
@@ -94,6 +94,6 @@ block content
               td #{user.NAME}
               td #{user.TITLE_OF_BOOK}
               td #{user.LENDING_DATE}
-              td #{user.EXPECT_RETURN_DATE}
+              td #{user.RETURN_DATE}
           -}
         

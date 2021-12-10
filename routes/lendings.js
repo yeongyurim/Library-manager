@@ -12,7 +12,7 @@ try{
     port : 3333,
     user:'root',
     password:'123456',
-    database: 'book'
+    database: 'nbook'
 
   });
 }
@@ -125,7 +125,7 @@ router.post('/return', function(req,res,next){
 router.get('/recent', function(req, res, next) {
   var sql = [];
 
-  sql[0] = "select LENDING.LENDING_SEQ, LENDING.RECORD_ID, LENDING.LIBRARY_ID, BOOK.TITLE_OF_BOOK, MEMBER.NAME, LENDING.LENDING_DATE, LENDING.EXPECT_RETURN_DATE";
+  sql[0] = "select LENDING.LENDING_SEQ, LENDING.RECORD_ID, LENDING.LIBRARY_ID, BOOK.TITLE_OF_BOOK, MEMBER.NAME, LENDING.LENDING_DATE, LENDING.RETURN_DATE";
   sql[1] = " from lending left join book on lending.record_id = book.record_id join member on lending.library_id = member.library_id where RETURN_DATE is not NULL";
   client.query(sql[0]+sql[1],function (e,r) {
     if (e) throw error ;
@@ -139,7 +139,7 @@ router.post('/recent', function(req, res, next) {
   var radio = req.body.radio;
   var sql = [];
 
-  sql[0] = "select LENDING.LENDING_SEQ, LENDING.RECORD_ID, LENDING.LIBRARY_ID, BOOK.TITLE_OF_BOOK, MEMBER.NAME, LENDING.LENDING_DATE, LENDING.EXPECT_RETURN_DATE";
+  sql[0] = "select LENDING.LENDING_SEQ, LENDING.RECORD_ID, LENDING.LIBRARY_ID, BOOK.TITLE_OF_BOOK, MEMBER.NAME, LENDING.LENDING_DATE, LENDING.RETURN_DATE";
   sql[1] = " from lending left join book on lending.record_id = book.record_id join member on lending.library_id = member.library_id where RETURN_DATE is not NULL AND "+radio+"= ?";
   client.query(sql[0]+sql[1],[id],
     function (e,r) {

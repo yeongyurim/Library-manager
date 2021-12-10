@@ -1,4 +1,4 @@
-insert into user (UNION_ID,passwd,name) values ('admin','admin1234','시험용관리자');
+insert into user (UNION_ID,passwd,KOREAN_NAME) values ('admin','admin1234','시험용관리자');
 insert into member (LIBRARY_ID,NAME,SEC_PASSWORD,SEC_EMAIL,SEC_MOBILE_PHONE1,SEC_MOBILE_PHONE2,SEC_MOBILE_PHONE3) values ('sample1','홍길동','sample1','sample1@naver.com','010','0000','0000');
 insert into member (LIBRARY_ID,NAME,SEC_PASSWORD,SEC_EMAIL,SEC_MOBILE_PHONE1,SEC_MOBILE_PHONE2,SEC_MOBILE_PHONE3) values ('sample2','김영희','sample2','sample2@naver.com','010','1111','1111');
 insert into member (LIBRARY_ID,NAME,SEC_PASSWORD,SEC_EMAIL,SEC_MOBILE_PHONE1,SEC_MOBILE_PHONE2,SEC_MOBILE_PHONE3) values ('sample3','김철수','sample3','sample3@naver.com','010','2222','2222');

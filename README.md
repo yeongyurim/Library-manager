@@ -1,5 +1,5 @@
 # graduation
-1. https://nodejs.org/en/download 설치
+1. https://nodejs.org/en/download node.js 설치
 2. https://www.mysql.com/downloads/ mysql 설치
 ****설치시 
 port 3333

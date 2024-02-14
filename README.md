@@ -1,6 +1,6 @@
 # graduation
 1. https://github.com/zxc991019/graduation zip파일 다운로드
-2. https://dev.mysql.com/downloads/windows/installer/8.0.html node.js 설치
+2. https://nodejs.org/en/download 설치
 3. https://www.mysql.com/downloads/ mysql 설치
 ****설치시 
 port 3333
